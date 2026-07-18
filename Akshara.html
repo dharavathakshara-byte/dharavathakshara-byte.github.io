@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akshara Dharavath — MS Financial Analysis, UWM Lubar</title>
+<meta name="description" content="Portfolio of Akshara Dharavath — incoming MS Financial Analysis student at UWM Lubar College of Business.">
+
+<!-- Fonts: Fraunces (ledger-style display serif), IBM Plex Sans (body), IBM Plex Mono (figures & data) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy: #0B1E3B;
+    --navy-deep: #071527;
+    --paper: #F7F3EA;
+    --paper-dim: #EDE7D8;
+    --ink: #14202B;
+    --gold: #C9A227;
+    --gold-soft: #E4C766;
+    --market-up: #2E7D5B;
+    --market-up-soft: #7FBF9B;
+    --line: rgba(201,162,39,0.35);
+    --text-light: #F2EFE6;
+    --text-light-dim: rgba(242,239,230,0.68);
+    --max-w: 1080px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,h2,h3, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .mono{
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  a { color: inherit; }
+
+  :focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11,30,59,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+  nav .brand{
+    color: var(--text-light);
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    text-decoration:none;
+  }
+  nav .brand span{ color: var(--gold-soft); }
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap: 28px;
+    margin:0; padding:0;
+  }
+  nav a.navlink{
+    color: var(--text-light-dim);
+    text-decoration:none;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family:'IBM Plex Mono', monospace;
+    transition: color 0.2s ease;
+  }
+  nav a.navlink:hover{ color: var(--gold-soft); }
+  #navToggle{ display:none; }
+  .navToggleLabel{ display:none; }
+
+  @media (max-width: 720px){
+    nav ul{
+      position: fixed;
+      top: 54px; left:0; right:0;
+      background: var(--navy-deep);
+      flex-direction: column;
+      padding: 20px 24px;
+      gap: 16px;
+      transform: translateY(-140%);
+      transition: transform 0.25s ease;
+      border-bottom: 1px solid var(--line);
+    }
+    #navToggle:checked ~ ul{ transform: translateY(0); }
+    .navToggleLabel{
+      display:block;
+      color: var(--gold-soft);
+      font-family:'IBM Plex Mono', monospace;
+      cursor:pointer;
+      font-size: 0.85rem;
+    }
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    background:
+      radial-gradient(ellipse at top right, rgba(201,162,39,0.10), transparent 55%),
+      var(--navy);
+    color: var(--text-light);
+    padding: 96px 0 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ledger-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .ledger-tag::before{
+    content:"";
+    width: 26px; height: 1px;
+    background: var(--gold);
+    display:inline-block;
+  }
+
+  .hero h1{
+    font-size: clamp(2.4rem, 6vw, 4.1rem);
+    line-height: 1.04;
+    margin: 0 0 18px;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: var(--gold-soft);
+  }
+  .hero p.lede{
+    max-width: 560px;
+    font-size: 1.08rem;
+    color: var(--text-light-dim);
+    margin: 0 0 34px;
+  }
+  .hero .cta-row{
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding: 12px 22px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration:none;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+  }
+  .btn-primary{
+    background: var(--gold);
+    color: var(--navy-deep);
+    border: 1px solid var(--gold);
+  }
+  .btn-primary:hover{ background: var(--gold-soft); }
+  .btn-ghost{
+    color: var(--text-light);
+    border: 1px solid rgba(242,239,230,0.35);
+  }
+  .btn-ghost:hover{ border-color: var(--gold-soft); color: var(--gold-soft); }
+
+  /* Hero chart signature */
+  .hero-chart{
+    margin-top: 56px;
+    max-width: 640px;
+  }
+  .hero-chart svg{ width:100%; height:auto; display:block; }
+  .chart-path{
+    stroke-dasharray: 900;
+    stroke-dashoffset: 900;
+    animation: draw 2.2s ease forwards 0.4s;
+  }
+  @keyframes draw{ to{ stroke-dashoffset: 0; } }
+  .chart-caption{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-light-dim);
+    display:flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .chart-path{ animation: none; stroke-dashoffset: 0; }
+    html{ scroll-behavior: auto; }
+  }
+
+  /* ---------- TICKER ---------- */
+  .ticker{
+    background: var(--navy-deep);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 12px 0;
+  }
+  .ticker-track{
+    display: inline-block;
+    padding-left: 100%;
+    animation: scrollTicker 32s linear infinite;
+  }
+  .ticker-track span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--text-light-dim);
+    margin-right: 46px;
+    letter-spacing: 0.03em;
+  }
+  .ticker-track span.up{ color: var(--market-up-soft); }
+  .ticker-track span.gold{ color: var(--gold-soft); }
+  @keyframes scrollTicker{
+    0%{ transform: translateX(0); }
+    100%{ transform: translateX(-100%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{ animation: none; padding-left: 0; }
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding: 84px 0;
+    border-bottom: 1px solid rgba(20,32,43,0.08);
+  }
+  section:last-of-type{ border-bottom:none; }
+
+  .section-head{
+    display:flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .line-no{
+    font-family:'IBM Plex Mono', monospace;
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+  }
+  .section-head h2{
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin: 0;
+  }
+  .section-head::after{
+    content:"";
+    flex:1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* About */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .about-grid p{ margin: 0 0 16px; color: #33414D; }
+  .stat-card{
+    background: var(--paper-dim);
+    border: 1px solid rgba(20,32,43,0.08);
+    border-left: 3px solid var(--gold);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .stat-card .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--navy);
+    display:block;
+  }
+  .stat-card .label{
+    font-size: 0.82rem;
+    color: #5A6772;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 780px){
+    .about-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* Experience */
+  .entry{
+    display:grid;
+    grid-template-columns: 200px 1fr;
+    gap: 28px;
+    padding: 26px 0;
+    border-top: 1px solid rgba(20,32,43,0.08);
+  }
+  .entry:first-of-type{ border-top:none; }
+  .entry .when{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .entry h3{ margin: 0 0 4px; font-size: 1.2rem; }
+  .entry .org{
+    font-size: 0.92rem;
+    color: #5A6772;
+    margin-bottom: 12px;
+  }
+  .entry ul{
+    margin: 0;
+    padding-left: 18px;
+    color: #33414D;
+  }
+  .entry ul li{ margin-bottom: 6px; }
+  .placeholder{
+    color: #8A6D00;
+    background: #FBF3D8;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 0.88em;
+  }
+
+  @media (max-width: 640px){
+    .entry{ grid-template-columns: 1fr; gap: 6px; }
+  }
+
+  /* Certifications / Leadership badges */
+  .badge-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+  }
+  .badge{
+    border: 1px solid rgba(20,32,43,0.1);
+    background: var(--paper-dim);
+    padding: 20px;
+  }
+  .badge .mark{
+    display:inline-block;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-family:'IBM Plex Mono', monospace;
+    font-weight: 600;
+    text-align:center;
+    line-height: 30px;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+  }
+  .badge h3{ font-size: 1.02rem; margin: 0 0 6px; }
+  .badge p{ margin:0; font-size: 0.9rem; color: #5A6772; }
+
+  /* Projects */
+  .project-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .project-card{
+    background: var(--navy);
+    color: var(--text-light);
+    padding: 26px;
+    position: relative;
+    border-top: 3px solid var(--gold);
+  }
+  .project-card h3{
+    margin: 0 0 10px;
+    font-size: 1.1rem;
+  }
+  .project-card p.project-date{
+    color: var(--gold-soft);
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+  .project-card p{
+    color: var(--text-light-dim);
+    font-size: 0.92rem;
+    margin: 0 0 16px;
+  }
+  .project-card a.readlink{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--gold-soft);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .project-card a.readlink:hover{ text-decoration: underline; }
+
+  /* Education */
+  .edu-card{
+    display:flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 0;
+    border-top: 1px solid rgba(20,32,43,0.08);
+    flex-wrap: wrap;
+  }
+  .edu-card:first-of-type{ border-top:none; }
+  .edu-card h3{ margin: 0 0 4px; font-size: 1.15rem; }
+  .edu-card .school{ color:#5A6772; font-size: 0.92rem; }
+  .edu-card .gpa{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--navy);
+    background: var(--paper-dim);
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    align-self: flex-start;
+  }
+
+  /* Beyond work */
+  .beyond p{ color: #33414D; max-width: 700px; }
+
+  /* Footer / Contact */
+  footer{
+    background: var(--navy-deep);
+    color: var(--text-light);
+    padding: 72px 0 40px;
+  }
+  footer h2{ color: var(--text-light); }
+  footer .section-head::after{ background: var(--line); }
+  .contact-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .contact-item .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold-soft);
+    display:block;
+    margin-bottom: 6px;
+  }
+  .contact-item a{
+    color: var(--text-light);
+    text-decoration:none;
+    font-size: 1rem;
+    border-bottom: 1px solid transparent;
+  }
+  .contact-item a:hover{ border-color: var(--gold-soft); }
+  .fine-print{
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    font-size: 0.8rem;
+    color: var(--text-light-dim);
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">Akshara Dharavath<span>.</span></a>
+    <input type="checkbox" id="navToggle">
+    <label for="navToggle" class="navToggleLabel">MENU</label>
+    <ul>
+      <li><a class="navlink" href="#about">About</a></li>
+      <li><a class="navlink" href="#experience">Experience</a></li>
+      <li><a class="navlink" href="#leadership">Leadership</a></li>
+      <li><a class="navlink" href="#credentials">Credentials</a></li>
+      <li><a class="navlink" href="#projects">Projects</a></li>
+      <li><a class="navlink" href="#education">Education</a></li>
+      <li><a class="navlink" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="ledger-tag">Statement of Record — Fiscal Year 2026</div>
+    <h1>Akshara Dharavath<br><em>reads markets, and the people behind them.</em></h1>
+    <p class="lede">Incoming MS in Financial Analysis at the Lubar College of Business, University of Wisconsin&ndash;Milwaukee. Trained in equity analysis and financial modeling, and just as comfortable building the community around the numbers.</p>
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+    </div>
+
+    <div class="hero-chart">
+      <svg viewBox="0 0 640 160" preserveAspectRatio="none">
+        <line x1="0" y1="140" x2="640" y2="140" stroke="rgba(242,239,230,0.15)" stroke-width="1"/>
+        <line x1="0" y1="90" x2="640" y2="90" stroke="rgba(242,239,230,0.08)" stroke-width="1"/>
+        <line x1="0" y1="40" x2="640" y2="40" stroke="rgba(242,239,230,0.08)" stroke-width="1"/>
+        <path class="chart-path" d="M0,130 L90,118 L160,122 L230,90 L300,96 L370,60 L440,68 L510,34 L580,26 L640,10"
+              fill="none" stroke="#C9A227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="chart-caption">
+        <span>GITAM &middot; 2022</span>
+        <span>MCKINSEY FORWARD &middot; 2025</span>
+        <span>UWM LUBAR &middot; 2026&ndash;27</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="up">GPA 3.80 / 4.00 ▲</span>
+    <span>FINANCE CLUB &middot; 150+ MEMBERS LED</span>
+    <span class="gold">BLOOMBERG MARKET CONCEPTS ✓</span>
+    <span>PLACEMENT COORDINATOR &middot; 200+ STUDENTS</span>
+    <span class="gold">BLOOMBERG ESG ✓</span>
+    <span class="up">MCKINSEY FORWARD PROGRAM ▲</span>
+    <span>NCFM CERTIFIED</span>
+    <span>GPA 3.80 / 4.00 ▲</span>
+    <span>FINANCE CLUB &middot; 150+ MEMBERS LED</span>
+    <span class="gold">BLOOMBERG MARKET CONCEPTS ✓</span>
+    <span>PLACEMENT COORDINATOR &middot; 200+ STUDENTS</span>
+    <span class="gold">BLOOMBERG ESG ✓</span>
+    <span class="up">MCKINSEY FORWARD PROGRAM ▲</span>
+    <span>NCFM CERTIFIED</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="line-no">LINE 01</span>
+      <h2>About</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>I'm a finance graduate who thinks in both directions at once — from a balance sheet down to the person it affects, and from a person's goals back up to the numbers that get them there. My BBA in Financial Markets at GITAM University gave me the technical foundation; leading a 150-member finance club taught me that the best analysis is worthless if you can't explain it to someone who needs it.</p>
+        <p>This fall, I'm starting my MS in Financial Analysis at the Lubar College of Business, University of Wisconsin&ndash;Milwaukee — packing up a life in Hyderabad to build one in Milwaukee, with my sights set on investment banking, asset management, or wealth management.</p>
+        <p>What actually pulls me toward this field isn't the spreadsheets — it's the moment a model stops being numbers and starts being a decision someone has to make. I like being the person who gets them there with confidence instead of guesswork.</p>
+      </div>
+      <div>
+        <div class="stat-card"><span class="num">3.8</span><span class="label">GPA, BBA Financial Markets</span></div>
+        <div class="stat-card"><span class="num">150+</span><span class="label">Members, Finance Club Founded &amp; Led</span></div>
+        <div class="stat-card"><span class="num">200+</span><span class="label">Students, Placement Coordination</span></div>
+        <div class="stat-card"><span class="num">3-Day</span><span class="label">Campus Fest Directed End-to-End</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="line-no">LINE 02</span>
+      <h2>Experience</h2>
+    </div>
+
+    <div class="entry">
+      <div class="when">Jul 2025 – Present</div>
+      <div>
+        <h3>Associate Analyst</h3>
+        <div class="org">Chronicle Club (Deloitte-affiliated) &middot; Apprenticeship &middot; Hyderabad / Remote</div>
+        <ul>
+          <li>Built an Excel-based tracking system that cut post-publication errors by 40% and content delivery timelines by 25%.</li>
+          <li>Led a database reorganization that saved the team 8+ hours a week.</li>
+          <li>Analyze global media trends across 40+ reports, turning raw data into insight stakeholders can act on without a translation layer.</li>
+          <li>Used Tableau to trace a recurring operational bottleneck to its actual root cause — scheduling, not execution — one dashboard, one fix, a visibly smoother event cycle after.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">May – Jul 2024</div>
+      <div>
+        <h3>Financial Analyst</h3>
+        <div class="org">Kothatha Financial Services LLC &middot; Internship &middot; Remote</div>
+        <ul>
+          <li>Advised 30+ clients on personalized financial strategies, translating portfolio theory into decisions people were actually comfortable making.</li>
+          <li>Prepared compliance-audit documentation with 100% accuracy and maintained 98% client retention across the internship.</li>
+          <li>Learned, four weeks in, the difference between reciting diversification theory and calming down a client watching their portfolio move in real time.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Jan – Dec 2023</div>
+      <div>
+        <h3>Campus Ambassador</h3>
+        <div class="org">My Captain &middot; Internship &middot; Hybrid</div>
+        <ul>
+          <li>Represented the platform on campus, driving engagement through communication and event coordination.</li>
+          <li>Built early experience translating a program's value proposition to a skeptical student audience — a skill that transferred directly to client conversations later.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="line-no">LINE 03</span>
+      <h2>Leadership &amp; Campus Involvement</h2>
+    </div>
+
+    <div class="entry">
+      <div class="when">2023 – 2025</div>
+      <div>
+        <h3>Managing Director</h3>
+        <div class="org">Pramana (Annual College Fest), GITAM University</div>
+        <ul>
+          <li>Directed a 3-day, campus-wide fest end-to-end — owning promotional strategy, content, and timelines to drive turnout across the whole campus.</li>
+          <li>Led a large cross-departmental team spanning creative, logistics, hospitality, and sponsorship, delegating ownership without losing the thread on the overall production.</li>
+          <li>Was the person stakeholders, sponsors, and vendors called when something went sideways last minute — and the one who got it back on track.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Jun 2023 – May 2025</div>
+      <div>
+        <h3>Founder &amp; President, Finance Club Lead</h3>
+        <div class="org">GITAM School of Business</div>
+        <ul>
+          <li>Built a 150+ member finance community from zero, promoting financial literacy and market awareness through weekly posts, newsletters, and flyers.</li>
+          <li>Delivered 30+ weekly financial updates on market trends and simplified complex topics for 200+ students, working with a core team of 5–8 to keep content and events consistent.</li>
+          <li>Organized 10+ events and workshops with faculty and outside speakers, all delivered on schedule.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Aug 2023 – Jul 2025</div>
+      <div>
+        <h3>Placement Coordinator</h3>
+        <div class="org">GITAM University</div>
+        <ul>
+          <li>Primary liaison between 200+ students, recruiters, and university staff — the person both sides trusted to keep things moving.</li>
+          <li>Organized placement drives, pre-placement talks, and interview scheduling; reviewed resumes and coached peers, turning nervous energy into actual preparation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Oct 2022 – Jul 2025</div>
+      <div>
+        <h3>Student Representative</h3>
+        <div class="org">GITAM School of Business</div>
+        <ul>
+          <li>Acted as liaison between 100+ students and faculty, resolving academic concerns and streamlining communication.</li>
+          <li>Mediated conflicts, fostered a collaborative environment, and assisted with departmental events and placement activities.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Aug 2023 – May 2025</div>
+      <div>
+        <h3>Sports Marketing Manager</h3>
+        <div class="org">Directorate of Sports &amp; NCC, GITAM University</div>
+        <ul>
+          <li>Led marketing for 10+ campus sports events, reaching 300+ students through social and on-ground campaigns.</li>
+          <li>Coordinated logistics and cross-functional teams to keep event execution smooth end to end.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="credentials">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="line-no">LINE 04</span>
+      <h2>Credentials &amp; Recognition</h2>
+    </div>
+    <div class="badge-grid">
+      <div class="badge">
+        <span class="mark">MF</span>
+        <h3>McKinsey.org Forward Program</h3>
+        <p>Selected participant, issued Jun 2026 — structured problem-solving, MECE frameworks, and issue-tree based analysis.</p>
+      </div>
+      <div class="badge">
+        <span class="mark">BB</span>
+        <h3>Bloomberg Market Concepts</h3>
+        <p>Issued Jun 2024. Economic indicators, currencies, fixed income, and equities, worked through real terminal data rather than theory alone.</p>
+      </div>
+      <div class="badge">
+        <span class="mark">ESG</span>
+        <h3>Bloomberg ESG Certificate</h3>
+        <p>Issued Jan 2024. Environmental, social, and governance analysis — sustainability metrics, corporate responsibility, and risk in business decisions.</p>
+      </div>
+      <div class="badge">
+        <span class="mark">BF</span>
+        <h3>Bloomberg Finance Fundamentals</h3>
+        <p>Issued Mar 2024. Core financial concepts, markets, and instruments, applied to real-world scenarios.</p>
+      </div>
+      <div class="badge">
+        <span class="mark">NC</span>
+        <h3>NCFM Certification</h3>
+        <p>National Stock Exchange certification in financial markets fundamentals.</p>
+      </div>
+      <div class="badge">
+        <span class="mark">+7</span>
+        <h3>Coursera Coursework</h3>
+        <p>Financial Accounting Fundamentals (UVA), Global Financial Markets &amp; Instruments (Rice), Cost Accounting: Decision Making (TUM), Banking &amp; Financial Institutions (UIUC), Everyday Excel Parts 1–3 (CU Boulder), Fundamentals of International Business (University of London).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="line-no">LINE 05</span>
+      <h2>Selected Work</h2>
+    </div>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>The Impact of Digitalization on Mutual Fund Distribution in India</h3>
+        <p class="project-date">Jan – May 2025 &middot; GITAM University</p>
+        <p>Studied how the shift from paper-based, branch-dependent investing to mobile-first, e-KYC platforms has widened access to mutual funds across India. Ran primary research through seminars and surveys across employed, unemployed, and elderly segments, then used correlation and regression analysis to show a measurable link between digital access and new-investor growth, especially among Millennials and Gen Z. The throughline: digitalization isn't just an efficiency story for asset managers, it's a financial-inclusion one.</p>
+      </div>
+      <div class="project-card">
+        <h3>Inside-Out View Window — Capstone Product Development</h3>
+        <p class="project-date">Jun – Dec 2024 &middot; GITAM University</p>
+        <p>Took a novel smart-glass concept — a mirrored exterior with a fully clear interior view — from idea to a detailed development plan, since the underlying technology didn't yet exist in the Indian market. Owned concept ideation, technical specification for the screen layer, UX design for privacy and clarity, and proof-of-concept planning for the two-way opacity mechanism, pulling together materials science, market analysis, and user-centered design.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="line-no">LINE 06</span>
+      <h2>Education</h2>
+    </div>
+
+    <div class="edu-card">
+      <div>
+        <h3>MS, Financial Analysis</h3>
+        <div class="school">Lubar College of Business, University of Wisconsin&ndash;Milwaukee &middot; Aug 2026 &ndash; Dec 2027</div>
+      </div>
+      <div class="gpa">Incoming</div>
+    </div>
+
+    <div class="edu-card">
+      <div>
+        <h3>BBA, Financial Markets</h3>
+        <div class="school">GITAM University, Hyderabad &middot; 2022 &ndash; 2025</div>
+      </div>
+      <div class="gpa">3.8 / 4.0 GPA</div>
+    </div>
+  </div>
+</section>
+
+<section class="beyond">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="line-no">LINE 07</span>
+      <h2>Beyond the Numbers</h2>
+    </div>
+    <p>Before spreadsheets, it was a soccer field — I played competitively for years, and I'm looking to keep that going with UWM's Women's Club Soccer team once I land in Milwaukee. I'm also just as drawn to building rooms as I am to building models: founding a 150-member finance club and coordinating placements for 200+ students taught me that community infrastructure is its own kind of analysis.</p>
+    <p>Hyderabad to Milwaukee is a bigger jump than a flight time — new country, new classroom, new version of independence. I'm going in treating it the way I'd treat any big position: do the research, know what you're risking, and commit anyway.</p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="line-no">LINE 08</span>
+      <h2>Get In Touch</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span class="label">Email</span>
+        <a href="mailto:adharavath@uwm.edu">adharavath@uwm.edu</a>
+      </div>
+      <div class="contact-item">
+        <span class="label">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/dharavath-akshara-20b058238" target="_blank" rel="noopener">linkedin.com/in/dharavath-akshara</a>
+      </div>
+      <div class="contact-item">
+        <span class="label">GitHub</span>
+        <a href="#" class="placeholder">github.com/your-handle</a>
+      </div>
+      <div class="contact-item">
+        <span class="label">Location</span>
+        <span>Milwaukee, WI (from Aug 2026)</span>
+      </div>
+    </div>
+    <div class="fine-print">
+      <span>&copy; 2026 Akshara Dharavath. Built with intent.</span>
+      <span>Milwaukee, WI</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
